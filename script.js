@@ -1,12 +1,10 @@
 // Get modal elements
 const whatsappModal = document.getElementById('whatsappModal');
 const phoneModal = document.getElementById('phoneModal');
-const loopModal = document.getElementById('loopModal');
 
 // Get button elements
 const whatsappBtn = document.getElementById('whatsappBtn');
 const phoneBtn = document.getElementById('phoneBtn');
-const loopBtn = document.getElementById('loopBtn');
 
 // Get close buttons
 const closeButtons = document.querySelectorAll('.close');
@@ -19,11 +17,6 @@ whatsappBtn.addEventListener('click', () => {
 // Phone Modal
 phoneBtn.addEventListener('click', () => {
     phoneModal.style.display = 'block';
-});
-
-// Loop Modal
-loopBtn.addEventListener('click', () => {
-    loopModal.style.display = 'block';
 });
 
 // Close Modals
@@ -40,19 +33,17 @@ window.addEventListener('click', (e) => {
     }
 });
 
-// Download vCard
+// Download vCard (Name & Number only)
 const downloadVcardBtn = document.getElementById('downloadVcardBtn');
 if (downloadVcardBtn) {
     downloadVcardBtn.addEventListener('click', () => {
         const name = document.getElementById('contactName').value;
         const phone = document.getElementById('contactPhone').value;
-        const email = document.getElementById('contactEmail').value;
 
         const vcard = `BEGIN:VCARD
 VERSION:3.0
 FN:${name}
 TEL:${phone}
-EMAIL:${email}
 END:VCARD`;
 
         const element = document.createElement('a');
@@ -66,27 +57,6 @@ END:VCARD`;
         alert('Contact downloaded as vCard!');
     });
 }
-
-// Loop button animation
-loopBtn.addEventListener('click', function() {
-    this.style.transform = 'rotate(360deg)';
-    setTimeout(() => {
-        this.style.transform = 'rotate(0deg)';
-    }, 600);
-});
-
-// Add smooth scroll behavior
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    });
-});
 
 // Keyboard shortcut to close modal (ESC key)
 document.addEventListener('keydown', (e) => {
@@ -110,6 +80,5 @@ window.addEventListener('load', () => {
         greeting = 'Good Evening!';
     }
     
-    // You can use this greeting if needed
     console.log(greeting);
 });
